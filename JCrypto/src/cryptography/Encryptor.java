@@ -1,13 +1,11 @@
 package cryptography;
 
+import java.math.BigInteger;
 import java.util.Map;
 
 public class Encryptor {
 
-	/*
-	 * @param plainText
-	 * @param rotation
-	 */
+
 	public static String RotEncrypt(String plainText, int rotation){
 		
 		String encryptedText = "";
@@ -42,10 +40,6 @@ public class Encryptor {
 		return encryptedText;
 	}
 
-	/*
-	 * @param plainText  
-	 * @param mapping
-	 */
 	public static String MonoAlphabeticEncrypt(String plainText, Map<Character, Character> mapping){
 		
 		String encryptedText = "";
@@ -62,11 +56,6 @@ public class Encryptor {
 		return encryptedText;
 	}
 	
-	/*
-
-	 * @param plainText 
-	 * @param key
-	 */
 	public static String XorEncrypt(String plainText, String key){
 		
 		String encryptedText = "";
@@ -79,10 +68,6 @@ public class Encryptor {
 		
 	}
 
-	/*
-	 * @param plainText
-	 * @param key
-	 */
 	public static int[] XorEncrypt(String plainText, int[] key){
 
 		
@@ -94,7 +79,15 @@ public class Encryptor {
 		return encryptedNums;
 	}
 
-	//public static int[] RSAEncrypt(int[] nums, long k1, long k2){
+	public static BigInteger RSAEncrypt(BigInteger num, BigInteger p, BigInteger q){
 		
-	//}
+		BigInteger result = num;
+		result = result.pow((int) p.longValueExact());
+		result = result.mod(q);
+		
+		return result;
+	}
+	
+	//future methods: polyalphabetic encrypt, RSA key set generation, md5 hash, multiplicative cipher, AES
 }
+
